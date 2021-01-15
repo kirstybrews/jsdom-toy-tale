@@ -47,7 +47,7 @@ function createToy(toy) {
   p.id = `${toy.id}`
   let button = document.createElement('button')
   button.className = "like-btn"
-  button.innerText = "<3"
+  button.innerText = "Like"
   button.addEventListener('click', () => {
     // console.log(toy)
     addLikes(toy)
@@ -100,6 +100,11 @@ function addLikes(toy) {
   fetch(NEW_URL, reqPackage)
     .then(resp => resp.json())
     .then(toyObject => {
-      document.getElementById(`${toyObject.id}`).innerText = "Likes: " + likes.likes
+      // document.getElementById(`${toyObject.id}`).innerText = "Likes: " + likes.likes
+      updateLikes(toyObject, likes)
     })
+}
+
+function updateLikes(toyObject, likes) {
+  document.getElementById(`${toyObject.id}`).innerText = "Likes: " + likes.likes
 }
